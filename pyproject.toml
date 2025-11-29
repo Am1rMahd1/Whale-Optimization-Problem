@@ -1,7 +1,7 @@
 [project]
 name = "whale-optimization-algorithm"
 version = "0.1.0"
-description = ""
+description = "a python implementation for Whale Optimization Algorithm"
 authors = [
     {name = "Amir Mahdi Sedghi",email = "asedghi1380@gmail.com"}
 ]
