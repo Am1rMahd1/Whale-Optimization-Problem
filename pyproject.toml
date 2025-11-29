@@ -1,7 +1,7 @@
 [project]
 name = "whale-optimization-algorithm"
 version = "0.1.0"
-description = ""
+description = "a python implementation for Whale Optimization Algorithm"
 authors = [
     {name = "Amir Mahdi Sedghi",email = "asedghi1380@gmail.com"}
 ]
@@ -9,12 +9,19 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "numpy (>=2.3.5,<3.0.0)",
-    "plotly (>=6.5.0,<7.0.0)"
+    "plotly (>=6.5.0,<7.0.0)",
+    "pytest (>=9.0.1,<10.0.0)"
 ]
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.9.0"
+isort = "^7.0.0"
 
 [tool.poetry]
 packages = [{include = "whale_optimization_algorithm", from = "src"}]
 
+[tool.pytest.ini_options]
+addopts = "--suppress-no-test-exit-code"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
