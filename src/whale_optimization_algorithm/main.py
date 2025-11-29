@@ -62,15 +62,15 @@ def whaleOptimizationAlgorithm(data, max_iteration):
 
         x_star_value = data[x_star_index]
 
-        probability = throwACoinBetween0to1()
+        for data_samples in data:
+            probability = throwACoinBetween0to1()
 
+            # a parameter is a number that is reducing from 2 to 0 during iterations
+            a_parameter = a(iteration_number, max_iteration)
 
-        # a parameter is a number that is reducing from 2 to 0 during iterations
-        a_parameter = a(iteration_number, max_iteration)
+            A_parameter = A(a_parameter)
 
-        A_parameter = A(a_parameter)
-
-        movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
+            movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
 
 
         # calculate the distance
