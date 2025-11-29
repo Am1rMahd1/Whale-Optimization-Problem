@@ -7,9 +7,9 @@ from src.Strategies.SearchForPrey import SearchForPrey
 
 
 def create_data(distribution, how_many, dimensional):
-    if distribution == 'uniform':
+    if distribution == "uniform":
         return np.random.uniform(size=(how_many, dimensional))
-    elif distribution == 'normal':
+    elif distribution == "normal":
         return np.random.normal(size=(how_many, dimensional))
 
 
@@ -72,14 +72,9 @@ def whaleOptimizationAlgorithm(data, max_iteration):
 
             movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
 
-
         # calculate the distance
 
         # execute the movement
-
-
-
-
 
 
 def main():
@@ -89,5 +84,5 @@ def main():
     whaleOptimizationAlgorithm(data, 2)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

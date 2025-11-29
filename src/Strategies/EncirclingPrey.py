@@ -1,2 +1,2 @@
-class EncirclingPrey():
+class EncirclingPrey:
     pass
