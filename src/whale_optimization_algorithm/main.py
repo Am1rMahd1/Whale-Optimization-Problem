@@ -1,9 +1,7 @@
 import numpy as np
-import plotly.express as px
 
-from src.Strategies.BubbleNetAttackingMethod import BubbleNetAttackingMethod
 from src.Strategies.EncirclingPrey import EncirclingPrey
-from src.Strategies.SearchForPrey import SearchForPrey
+from src.utils.throw_coin import throwACoinBetween0to1
 
 
 def create_data(distribution, how_many, dimensional):
@@ -30,16 +28,13 @@ def findTheXStarIndex(fitnessVector):
 def chooseMovementStrategyRandomly(probability, A_parameter):
     if probability >= 0.5:
         if np.abs(A_parameter) < 1:
-            return EncirclingPrey()
+            return EncirclingPrey(A_parameter)
         else:
-            return SearchForPrey()
+            return EncirclingPrey(A_parameter)
+            # return SearchForPrey()
     else:
-        return BubbleNetAttackingMethod()
-
-
-def throwACoinBetween0to1():
-    probability = np.random.random_sample()
-    return round(probability, 2)
+        return EncirclingPrey(A_parameter)
+        # return BubbleNetAttackingMethod()
 
 
 def a(iteration_number, max_iteration):
@@ -60,28 +55,31 @@ def whaleOptimizationAlgorithm(data, max_iteration):
 
         x_star_index = findTheXStarIndex(fitnessVector)
 
-        x_star_value = data[x_star_index]
+        x_star_sample = data[x_star_index]
 
-        for data_samples in data:
+        for data_sample_index, data_sample in enumerate(data):
             probability = throwACoinBetween0to1()
 
             # a parameter is a number that is reducing from 2 to 0 during iterations
             a_parameter = a(iteration_number, max_iteration)
 
+            # what exactly is the A parameter?
             A_parameter = A(a_parameter)
 
             movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
 
-        # calculate the distance
+            new_data_sample = movementObject.setXstar(x_star_sample).move(data_sample)
 
-        # execute the movement
+            data[data_sample_index] = new_data_sample
+
+        print(data)
 
 
 def main():
-    data = np.array([-3, 4, -1, 2])
-    assert data.shape == (4,)
+    data = np.array([[-3], [4], [-1], [2]])
+    assert data.shape == (4, 1)
 
-    whaleOptimizationAlgorithm(data, 2)
+    whaleOptimizationAlgorithm(data, 10)
 
 
 if __name__ == "__main__":

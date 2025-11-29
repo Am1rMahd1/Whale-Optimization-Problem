@@ -19,14 +19,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Poetry
+      - name: Install Poetry and Dependencies
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH="$HOME/.local/bin:$PATH"
+          # This command installs BOTH main and dev dependencies automatically
           poetry install
 
-      - name: Install dev dependencies
-        run: poetry install --with dev
+      # REMOVED: "Install dev dependencies" step (it was redundant and causing errors)
 
       - name: Check code style (Black)
         run: poetry run black --check src/ tests/
@@ -35,4 +35,4 @@ jobs:
         run: poetry run isort --check-only src/ tests/
 
       - name: Run Tests
-        run: poetry run pytest -m -v
+        run: poetry run python -m pytest -v
