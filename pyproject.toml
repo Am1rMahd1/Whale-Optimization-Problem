@@ -18,6 +18,8 @@ dependencies = [
 [tool.poetry]
 packages = [{include = "whale_optimization_algorithm", from = "src"}]
 
+[tool.pytest.ini_options]
+addopts = "--suppress-no-test-exit-code"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

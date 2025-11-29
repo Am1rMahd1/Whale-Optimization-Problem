@@ -33,3 +33,6 @@ jobs:
 
       - name: Check import order (isort)
         run: poetry run isort --check-only src/ tests/
+
+      - name: Run Tests
+        run: poetry run pytest -m -v
