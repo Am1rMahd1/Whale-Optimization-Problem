@@ -5,9 +5,9 @@ from src.utils.throw_coin import throwACoinBetween0to1
 
 
 def create_data(distribution, how_many, dimensional):
-    if distribution == 'uniform':
+    if distribution == "uniform":
         return np.random.uniform(size=(how_many, dimensional))
-    elif distribution == 'normal':
+    elif distribution == "normal":
         return np.random.normal(size=(how_many, dimensional))
 
 
@@ -75,18 +75,12 @@ def whaleOptimizationAlgorithm(data, max_iteration):
         print(data)
 
 
-
 def main():
-    data = np.array([
-        [-3],
-        [4],
-        [-1],
-        [2]
-    ])
-    assert data.shape == (4,1)
+    data = np.array([[-3], [4], [-1], [2]])
+    assert data.shape == (4, 1)
 
     whaleOptimizationAlgorithm(data, 10)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

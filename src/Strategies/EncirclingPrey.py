@@ -1,13 +1,13 @@
+import numpy as np
+
 from src.Strategies.StrategySuperClass import StrategySuperClass
 from src.utils.throw_coin import throwACoinBetween0to1
-import numpy as np
 
 
 class EncirclingPrey(StrategySuperClass):
     def __init__(self, A_parameter):
         super().__init__(A_parameter)
         self.A_parameter = A_parameter
-
 
     def C(self):
         probability = throwACoinBetween0to1()
