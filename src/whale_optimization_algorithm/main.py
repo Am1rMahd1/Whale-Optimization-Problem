@@ -9,26 +9,48 @@ def create_data(distribution, how_many, dimensional):
         return np.random.normal(size=(how_many, dimensional))
 
 
-# we consider that our problem is 2-dimensional
-def F(x, y):
-    return x**2 + y**2
+# we consider that our problem is 1-dimensional
+def F(x):
+    return x**2
+
+
+def calculateFitnessForAllData(data):
+    x_dimensional_of_the_data = data
+    return F(x_dimensional_of_the_data)
+
+
+def findTheXStarIndex(fitnessVector):
+    return np.argmin(fitnessVector)
+
 
 def whaleOptimizationAlgorithm(data, max_iteration):
+    # make a copy of original data
+    data = data.copy()
     for iteration in range(max_iteration):
-        pass
+        fitnessVector = calculateFitnessForAllData(data)
 
-    # iteration = ?
+        x_star_index = findTheXStarIndex(fitnessVector)
 
-    # p = np.random.rand
+        x_star_value = data[x_star_index]
+
+        print(x_star_value)
+
+        # choose the movement type
+
+        # calculate the distance
+
+        # execute the movement
+
+
 
 
 
 
 def main():
-    # data = create_data('normal', 10, 2)
-    # assert data.shape == (10, 2)
     data = np.array([-3, 4, -1, 2])
     assert data.shape == (4,)
+
+    whaleOptimizationAlgorithm(data, 2)
 
 
 if __name__ == '__main__':
