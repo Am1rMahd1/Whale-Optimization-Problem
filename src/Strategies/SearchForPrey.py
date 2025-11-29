@@ -1,0 +1,2 @@
+class SearchForPrey:
+    pass
