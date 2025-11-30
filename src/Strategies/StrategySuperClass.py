@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class StrategySuperClass(ABC):
-    def __init__(self, A_parameter):
+    def __init__(self):
         pass
 
     def setXstar(self, Xstar):
