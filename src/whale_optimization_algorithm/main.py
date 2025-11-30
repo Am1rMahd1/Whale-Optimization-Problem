@@ -3,6 +3,7 @@ import numpy as np
 from src.Strategies.EncirclingPrey import EncirclingPrey
 from src.utils.throw_coin import throwACoinBetween0to1
 from Strategies.BubbleNetAttackingMethod import BubbleNetAttackingMethod
+from Strategies.SearchForPrey import SearchForPrey
 
 
 def create_data(distribution, how_many, dimensional):
@@ -31,8 +32,7 @@ def chooseMovementStrategyRandomly(probability, A_parameter):
         if np.abs(A_parameter) < 1:
             return EncirclingPrey(A_parameter)
         else:
-            return EncirclingPrey(A_parameter)
-            # return SearchForPrey()
+            return SearchForPrey(A_parameter)
     else:
         return BubbleNetAttackingMethod()
 
@@ -68,7 +68,14 @@ def whaleOptimizationAlgorithm(data, max_iteration):
 
             movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
 
-            new_data_sample = movementObject.setXstar(x_star_sample).move(data_sample)
+            if type(movementObject) == SearchForPrey:
+                random_index = np.random.randint(0, len(data))
+                random_sample = data[random_index]
+                movementObject.setXstar(random_sample)
+            else:
+                movementObject.setXstar(x_star_sample)
+
+            new_data_sample = movementObject.move(data_sample)
 
             data[data_sample_index] = new_data_sample
 
