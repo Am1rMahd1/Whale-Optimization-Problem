@@ -2,6 +2,7 @@ import numpy as np
 
 from src.Strategies.EncirclingPrey import EncirclingPrey
 from src.utils.throw_coin import throwACoinBetween0to1
+from Strategies.BubbleNetAttackingMethod import BubbleNetAttackingMethod
 
 
 def create_data(distribution, how_many, dimensional):
@@ -33,8 +34,7 @@ def chooseMovementStrategyRandomly(probability, A_parameter):
             return EncirclingPrey(A_parameter)
             # return SearchForPrey()
     else:
-        return EncirclingPrey(A_parameter)
-        # return BubbleNetAttackingMethod()
+        return BubbleNetAttackingMethod()
 
 
 def a(iteration_number, max_iteration):
@@ -63,7 +63,7 @@ def whaleOptimizationAlgorithm(data, max_iteration):
             # a parameter is a number that is reducing from 2 to 0 during iterations
             a_parameter = a(iteration_number, max_iteration)
 
-            # what exactly is the A parameter?
+            # todo: what exactly is the A parameter?
             A_parameter = A(a_parameter)
 
             movementObject = chooseMovementStrategyRandomly(probability, A_parameter)
