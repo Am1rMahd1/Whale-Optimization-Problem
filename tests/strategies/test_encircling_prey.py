@@ -17,7 +17,7 @@ class TestEncirclingPrey(unittest.TestCase):
 
         # Simulate the behavior of setXstar() from the parent class
         # We define a target (Best Whale) at position [10, 10]
-        self.strategy.Xstar = np.array([10.0, 10.0])
+        self.strategy.setXstar(np.array([10.0, 10.0]))
 
     @patch("src.Strategies.EncirclingPrey.throwACoinBetween0to1")
     def test_C_calculation(self, mock_coin):
